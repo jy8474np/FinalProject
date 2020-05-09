@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Budget</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body>
 
+<body>
+<div id="app">
+    <h1>Personal Budget</h1>
+    <p>
+        {{message}}
+    </p>
+</div>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: 'template',
+        }
+    })
+</script>
 </body>
+
 </html>
