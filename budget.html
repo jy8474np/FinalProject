@@ -12,6 +12,11 @@
     <h1>Monthly Budget</h1>
     <label for="income">Monthly Income</label>
     <input v-model="income" id="income">
+    {{ income }}
+    <p>
+    <label for="shelter">Monthly Mortgage/Rent</label>
+    <input v-model="shelter" id="shelter">
+    </p>
     <p>
         {{message}}
     </p>
@@ -21,8 +26,8 @@
     let app = new Vue({
         el: '#app',
         data: {
-            message: 'template',
-        }
+            income: ""
+        },
     })
 </script>
 </body>
