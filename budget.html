@@ -70,7 +70,7 @@
     <div class="card">
         <h2 class="card-header">Ledger</h2>
 
-        <div class="card-body">
+        <h3> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits </h3>
 
             <div id="ledger">
                 <table class="table">
@@ -107,9 +107,11 @@
         el: "#app",
         data: {
             income: "",
+            incomeItems: [],
             expenseOption: "",
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
+            expenseItems: [],
             savingOption: "",
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
             amount: 0,
