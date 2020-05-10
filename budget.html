@@ -14,10 +14,8 @@
     <h1>Monthly Budget</h1>
 
     <div id="add-income" class="card">
-
         <h2 class="card-header">Income</h2>
         <div class="card-body">
-
             <form>
                 <div class="form-group">
                     <label class="form-label" for="income">Monthly Income: </label>
@@ -28,9 +26,13 @@
                     <button class="btn btn-primary mt-2" type="button" v-on:click="submit">Add Income</button>
                 </div>
             </form>
+        </div>
+    </div>
 
                 <p></p>
-
+    <div id="add-expense" class="card">
+        <h2 class="card-header">Expenses</h2>
+        <div class="card-body">
             <form>
                 <div class="form-group">
                     <label class="form-label" for="expenseOption">Monthly Expenses: </label>
@@ -43,9 +45,13 @@
                     <button class="btn btn-primary mt-2" type="button" v-on:click="submit">Add Expense</button>
                 </div>
             </form>
+        </div>
+    </div>
 
                 <p></p>
-
+    <div id="add-saving" class="card">
+        <h2 class="card-header">Savings</h2>
+        <div class="card-body">
             <form>
                 <div class="form-group">
                     <label class="form-label" for="savingOption">Monthly Savings: </label>
@@ -58,8 +64,9 @@
                     <button class="btn btn-primary mt-2" type="button" v-on:click="submit">Add Savings</button>
                 </div>
             </form>
-
         </div>
+    </div>
+</div>
 </div>
 
 <script>
