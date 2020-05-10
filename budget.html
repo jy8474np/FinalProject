@@ -5,31 +5,63 @@
     <meta charset="UTF-8">
     <title>Budget</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="budgeStyle.css" type="text/css">
+<!--    Add Bootstrap Style Link here-->
 </head>
 
 <body>
 <div id="app">
     <h1>Monthly Budget</h1>
-    <label for="income">Monthly Income</label>
-    <input v-model="income" id="income">
-    {{ income }}
-    <p>
-    <label for="shelter">Monthly Mortgage/Rent</label>
-    <input v-model="shelter" id="shelter">
-    </p>
-    <p>
-        {{message}}
-    </p>
+
+    <div id="add-income" class="card">
+
+        <h2 class="card-header">Income</h2>
+        <div class="card-body">
+
+            <form>
+
+                <div class="form-group">
+                    <label class="form-label" for="income">Monthly Income: </label>
+                    <!-- TODO v-model to app data property -->
+                    <input id="income" class="form-control" type="number" min="0">
+                </div>
+
+<!--    <label for="income">Monthly Income: </label>-->
+<!--    <input v-model="income" id="income">-->
+<!--    {{ income }}-->
+<!--    <p>-->
+<!--    <label for="shelter">Monthly Mortgage/Rent: </label>-->
+<!--    <input v-model="shelter" id="shelter">-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        {{message}}-->
+<!--    </p>-->
+                <div>
+                    <button class="btn btn-primary mt-2" type="button" v-on:click="incomeSubmit">Add Income</button>
+                </div>
+            </form>
+        </div>
 </div>
 
 <script>
     let app = new Vue({
-        el: '#app',
+        el: "#app",
         data: {
-            income: ""
+            income: "",
+            incomeRecord: [],
+            expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
+                'Phone', 'Utilities', 'Other'],
+            savingsOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
         },
+        methods: {
+            let i = {
+                income: this.income,
+            }
+            this.incomeRecord.push(record)
+        }
     })
 </script>
+</div>
 </body>
 
 </html>
