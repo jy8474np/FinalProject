@@ -11,7 +11,7 @@
 
 <body>
 <div id="app">
-    <h1>Monthly Budget</h1>
+    <h1>Personal Budget Calculator</h1>
 
     <div id="add-income" class="card">
         <h2 class="card-header">Income</h2>
@@ -66,6 +66,41 @@
             </form>
         </div>
     </div>
+
+    <div class="card">
+        <h2 class="card-header">Ledger</h2>
+
+        <div class="card-body">
+
+            <div id="ledger">
+                <table class="table">
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr v-for="record in ledger">
+                        <td>{{ record.description }}</td>
+                        <td>{{ record.amount }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-header">Monthly Budget</h2>
+
+        <div class="card-body">
+            <!-- TODO use computed property to display total hours -->
+            <p>Budget Breakdown</p>
+
+            <!-- TODO computed property to display total for each type  -->
+            <p>Budget Visualized</p>
+
+        </div>
+    </div>
+
+
 </div>
 </div>
 
@@ -74,14 +109,12 @@
         el: "#app",
         data: {
             income: "",
-            incomeAmount: "",
             expenseOption: "",
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
-            expenseAmount: "",
             savingOption: "",
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
-            savingAmount: "",
+            amount: 0,
             ledger: []
         },
         // filters: {
