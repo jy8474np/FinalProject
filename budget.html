@@ -82,13 +82,20 @@
             savingOption: "",
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
             savingAmount: "",
+            ledger: []
         },
         // filters: {
         //     ADD FILTERS HERE
         // }
-        // methods: {
-        //     ADD METHODDS HERE
-        // }
+        methods: {
+            submitExpense() {
+                let record = {
+                    expenseOption: this.expenseOption,
+                    expenseAmount: this.expenseAmount
+                }
+                this.ledger.push(record)
+            }
+        }
     })
 </script>
 </div>
