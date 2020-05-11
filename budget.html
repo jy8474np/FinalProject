@@ -16,14 +16,19 @@
 
 <body>
 <div id="app">
-    <h1>Personal Budget Calculator</h1>
+    <h1 class="text-center">Personal Budget Calculator</h1>
 
     <div id="add-income" class="card income m-2 p-2">
         <h2 class="card-header">Income</h2>
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label class="form-label" for="income">Monthly Income: </label>
+                    <label class="form-label" for="incomeOption">Select Income Type</label>
+                    <select class="form-control" v-model="incomeOption">
+                        <option v-for="incomeOption in incomeOptions" v-bind:value="incomeOption"> {{ incomeOption }}</option>
+                    </select>
+                    <p></p>
+                    <label class="form-label" for="income">Enter Income Amount</label>
                     <input id="income" class="form-control" type="number" min="0">
                 </div>
 
