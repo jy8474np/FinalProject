@@ -23,16 +23,16 @@
             <form>
                 <div class="form-group">
                     <label class="form-label" for="incomeOption">Select Income Type</label>
-                    <select class="form-control" v-model="incomeOption">
+                    <select id="incomeOption" class="form-control" v-model="incomeOption">
                         <option v-for="incomeOption in incomeOptions" v-bind:value="incomeOption"> {{ incomeOption }}</option>
                     </select>
                     <p></p>
-                    <label class="form-label" for="income">Enter Income Amount</label>
-                    <input id="income" class="form-control" v-model="incomeOption" type="number" min="0">
+                    <label class="form-label" for="incomeAmount">Enter Income Amount</label>
+                    <input id="incomeAmount" class="form-control" v-model="incomeAmount" v-bind:value="incomeAmount" type="number" min="0">
                 </div>
 
                 <div>
-                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitIncome">Add Income</button>
+                    <button class="btn btn-primary mt-2" type="button" v-on:click="addIncome">Add Income</button>
                 </div>
             </form>
         </div>
@@ -45,7 +45,7 @@
             <form>
                 <div class="form-group">
                     <label class="form-label" for="expenseOption">Select Expense Type</label>
-                    <select class="form-control" v-model="expenseOption">
+                    <select id="expenseOption" class="form-control" v-model="expenseOption">
                         <option v-for="expenseOption in expenseOptions" v-bind:value="expenseOption"> {{ expenseOption }}</option>
                     </select>
                     <p></p>
@@ -67,7 +67,7 @@
             <form>
                 <div class="form-group">
                     <label class="form-label" for="savingOption">Select Savings Type</label>
-                    <select class="form-control" v-model="savingOption">
+                    <select id="savingOption" class="form-control" v-model="savingOption">
                         <option v-for="savingOption in savingOptions" v-bind:value="savingOption"> {{ savingOption }}</option>
                     </select>
                     <p></p>
@@ -87,15 +87,16 @@
 
         <h3 class="card=header m-2 p-2"> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits </h3>
 
-            <div id="ledger">
+            <div id="ledger-table">
                 <table class="table m-2 p-2">
                     <tr>
                         <th>Description</th>
                         <th>Amount</th>
                     </tr>
-                    <tr v-for="record in ledger">
-                        <td>{{ record.description }}</td>
-                        <td>{{ record.amount }}</td>
+                    <tr v-for="income in incomeItems">
+                        <td>{{ income.description }}</td>
+                        <td>{{ income.amount }}</td>
+                    </tr>
                     </tr>
                 </table>
             </div>
@@ -121,16 +122,15 @@
     let app = new Vue({
         el: "#app",
         data: {
-            income: "",
             incomeOptions: ['Alimony/Child Support', 'Disability/Social Security', 'Dividends/Investments', 'Salary',
                 'Other'],
             incomeItems: [],
-            expenseOption: "",
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
+            expenseAmount: "",
             expenseItems: [],
-            savingOption: "",
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
+            savingAmount: "",
             savingItems: [],
             ledger: []
         },
@@ -139,9 +139,10 @@
         // }
         methods: {
             addIncome() {
-                this.incomeItems = []
-                let income = {amount: this.income, description: this.incomeOptions}
+                let income = {description: this.incomeOption, amount: this.incomeAmount}
                 this.incomeItems.push(income)
+                this.incomeOption = ''
+                this.incomeAmount = ''
             }
         }
     })
