@@ -15,26 +15,33 @@
 
 <body>
 <div id="app">
+
     <h1 class="text-center">Personal Budget Calculator</h1>
 
     <div id="add-income" class="card add-income m-2 p-2">
+
         <h2 class="card-header">Income</h2>
+
         <div class="card-body">
             <form>
                 <div class="form-group">
                     <label class="form-label" for="incomeOption">Select Income Type</label>
+
                     <select id="incomeOption" class="form-control" v-model="incomeOption">
-                        <option v-for="incomeOption in incomeOptions" v-bind:value="incomeOption"> {{ incomeOption }}</option>
+                        <option v-for="opt in incomeOptions" v-bind:value="opt"> {{ opt }}</option>
                     </select>
+
                     <p></p>
+
                     <label class="form-label" for="incomeAmount">Enter Income Amount</label>
-                    <input id="incomeAmount" class="form-control" v-model="incomeAmount" v-bind:value="incomeAmount" type="number" min="0">
+                    <input id="incomeAmount" class="form-control" v-model="incomeAmount" type="number" min="0">
                 </div>
 
                 <div>
                     <button class="btn btn-primary mt-2" type="button" v-on:click="addIncome">Add Income</button>
                 </div>
             </form>
+
         </div>
     </div>
 
@@ -53,9 +60,9 @@
                     <input id="expense" class="form-control" type="number" min="0">
                 </div>
 
-                <div>
-                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitExpense">Add Expense</button>
-                </div>
+<!--                <div>-->
+<!--                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitExpense">Add Expense</button>-->
+<!--                </div>-->
             </form>
         </div>
     </div>
@@ -75,9 +82,9 @@
                     <input id="saving" class="form-control" type="number" min="0">
                 </div>
 
-                <div>
-                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitSaving">Add Savings</button>
-                </div>
+<!--                <div>-->
+<!--                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitSaving">Add Savings</button>-->
+<!--                </div>-->
             </form>
         </div>
     </div>
@@ -124,12 +131,16 @@
         data: {
             incomeOptions: ['Alimony/Child Support', 'Disability/Social Security', 'Dividends/Investments', 'Salary',
                 'Other'],
+            incomeOption: '',
+            incomeAmount: 0,
             incomeItems: [],
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
+            expenseOption: '',
             expenseAmount: "",
             expenseItems: [],
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
+            savingOption: '',
             savingAmount: "",
             savingItems: [],
             ledger: []
@@ -139,6 +150,7 @@
         // }
         methods: {
             addIncome() {
+                console.log("add income!")
                 let income = {description: this.incomeOption, amount: this.incomeAmount}
                 this.incomeItems.push(income)
                 this.incomeOption = ''
@@ -147,6 +159,7 @@
         }
     })
 </script>
+
 </div>
 </body>
 
