@@ -40,10 +40,13 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label class="form-label" for="expenseOption">Monthly Expenses: </label>
+                    <label class="form-label" for="expenseOption">Select Expense Type</label>
                     <select class="form-control" v-model="expenseOption">
                         <option v-for="expenseOption in expenseOptions" v-bind:value="expenseOption"> {{ expenseOption }}</option>
                     </select>
+                    <p></p>
+                    <label class="form-label" for="expense">Enter Expense Amount</label>
+                    <input id="expense" class="form-control" type="number" min="0">
                 </div>
 
                 <div>
@@ -59,10 +62,13 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label class="form-label" for="savingOption">Monthly Savings: </label>
+                    <label class="form-label" for="savingOption">Select Savings Type</label>
                     <select class="form-control" v-model="savingOption">
                         <option v-for="savingOption in savingOptions" v-bind:value="savingOption"> {{ savingOption }}</option>
                     </select>
+                    <p></p>
+                    <label class="form-label" for="saving">Enter Savings Amount</label>
+                    <input id="saving" class="form-control" type="number" min="0">
                 </div>
 
                 <div>
@@ -113,13 +119,15 @@
         data: {
             income: "",
             incomeItems: [],
+            incomeOptions: ['Alimony/Child Support', 'Disability/Social Security', 'Dividends/Investments', 'Salary',
+                'Other'],
             expenseOption: "",
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
             expenseItems: [],
             savingOption: "",
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
-            amount: 0,
+            savingItems: [],
             ledger: []
         },
         // filters: {
