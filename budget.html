@@ -4,16 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Budget</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--    CSS style link-->
     <link rel="stylesheet" href="budgeStyle.css" type="text/css">
-<!--    Add Bootstrap Style Link here-->
+<!--    Vue scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@2.6.7/dist/vue.js"></script>
+<!--    Bootstrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
 <div id="app">
     <h1>Personal Budget Calculator</h1>
 
-    <div id="add-income" class="card">
+    <div id="add-income" class="card income m-2 p-2">
         <h2 class="card-header">Income</h2>
         <div class="card-body">
             <form>
@@ -30,7 +35,7 @@
     </div>
 
                 <p></p>
-    <div id="add-expense" class="card">
+    <div id="add-expense" class="card expenses m-2 p-2">
         <h2 class="card-header">Expenses</h2>
         <div class="card-body">
             <form>
@@ -49,7 +54,7 @@
     </div>
 
                 <p></p>
-    <div id="add-saving" class="card">
+    <div id="add-saving" class="card savings m-2 p-2">
         <h2 class="card-header">Savings</h2>
         <div class="card-body">
             <form>
@@ -67,10 +72,10 @@
         </div>
     </div>
 
-    <div class="card">
+    <div id="ledger" class="card ledger  m-2 p-2">
         <h2 class="card-header">Ledger</h2>
 
-        <h3> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits </h3>
+        <h3 class="card=header m-2 p-2"> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits </h3>
 
             <div id="ledger">
                 <table class="table">
@@ -87,8 +92,8 @@
         </div>
     </div>
 
-    <div class="card">
-        <h2 class="card-header">Monthly Budget</h2>
+    <div id="summary" class="card summary m-2 p-2">
+        <h2 class="card-header  m-2 p-2">Monthly Budget</h2>
 
         <div class="card-body">
             <p>Budget Breakdown</p>
