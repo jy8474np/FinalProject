@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Budget</title>
 <!--    CSS style link-->
     <link rel="stylesheet" href="budgeStyle.css" type="text/css">
 <!--    Vue scripts-->
@@ -11,14 +10,14 @@
     <script src="https://unpkg.com/vue@2.6.7/dist/vue.js"></script>
 <!--    Bootstrap link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <title>Budget</title>
 </head>
 
 <body>
 <div id="app">
     <h1 class="text-center">Personal Budget Calculator</h1>
 
-    <div id="add-income" class="card income m-2 p-2">
+    <div id="add-income" class="card add-income m-2 p-2">
         <h2 class="card-header">Income</h2>
         <div class="card-body">
             <form>
@@ -29,7 +28,7 @@
                     </select>
                     <p></p>
                     <label class="form-label" for="income">Enter Income Amount</label>
-                    <input id="income" class="form-control" type="number" min="0">
+                    <input id="income" class="form-control" v-model="incomeOption" type="number" min="0">
                 </div>
 
                 <div>
@@ -89,7 +88,7 @@
         <h3 class="card=header m-2 p-2"> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits </h3>
 
             <div id="ledger">
-                <table class="table">
+                <table class="table m-2 p-2">
                     <tr>
                         <th>Description</th>
                         <th>Amount</th>
@@ -123,9 +122,9 @@
         el: "#app",
         data: {
             income: "",
-            incomeItems: [],
             incomeOptions: ['Alimony/Child Support', 'Disability/Social Security', 'Dividends/Investments', 'Salary',
                 'Other'],
+            incomeItems: [],
             expenseOption: "",
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
@@ -139,12 +138,10 @@
         //     ADD FILTERS HERE
         // }
         methods: {
-            submitExpense() {
-                let record = {
-                    expenseOption: this.expenseOption,
-                    expenseAmount: this.expenseAmount
-                }
-                this.ledger.push(record)
+            addIncome() {
+                this.incomeItems = []
+                let income = {amount: this.income, description: this.incomeOptions}
+                this.incomeItems.push(income)
             }
         }
     })
