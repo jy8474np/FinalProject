@@ -52,17 +52,20 @@
             <form>
                 <div class="form-group">
                     <label class="form-label" for="expenseOption">Select Expense Type</label>
+
                     <select id="expenseOption" class="form-control" v-model="expenseOption">
-                        <option v-for="expenseOption in expenseOptions" v-bind:value="expenseOption"> {{ expenseOption }}</option>
+                        <option v-for="opt in expenseOptions" v-bind:value="opt"> {{ opt }}</option>
                     </select>
+
                     <p></p>
-                    <label class="form-label" for="expense">Enter Expense Amount</label>
-                    <input id="expense" class="form-control" type="number" min="0">
+
+                    <label class="form-label" for="expenseAmount">Enter Expense Amount</label>
+                    <input id="expenseAmount" class="form-control" v-model="expenseAmount" type="number" min="0">
                 </div>
 
-<!--                <div>-->
-<!--                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitExpense">Add Expense</button>-->
-<!--                </div>-->
+                <div>
+                    <button class="btn btn-primary mt-2" type="button" v-on:click="addExpense">Add Expense</button>
+                </div>
             </form>
         </div>
     </div>
@@ -73,18 +76,21 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <label class="form-label" for="savingOption">Select Savings Type</label>
+                    <label class="form-label" for="savingOption">Select Saving Type</label>
+
                     <select id="savingOption" class="form-control" v-model="savingOption">
-                        <option v-for="savingOption in savingOptions" v-bind:value="savingOption"> {{ savingOption }}</option>
+                        <option v-for="opt in savingOptions" v-bind:value="opt"> {{ opt }}</option>
                     </select>
+
                     <p></p>
-                    <label class="form-label" for="saving">Enter Savings Amount</label>
-                    <input id="saving" class="form-control" type="number" min="0">
+
+                    <label class="form-label" for="savingAmount">Enter Saving Amount</label>
+                    <input id="savingAmount" class="form-control" v-model="savingAmount" type="number" min="0">
                 </div>
 
-<!--                <div>-->
-<!--                    <button class="btn btn-primary mt-2" type="button" v-on:click="submitSaving">Add Savings</button>-->
-<!--                </div>-->
+                <div>
+                    <button class="btn btn-primary mt-2" type="button" v-on:click="addSaving">Add Saving</button>
+                </div>
             </form>
         </div>
     </div>
@@ -92,7 +98,8 @@
     <div id="ledger" class="card ledger  m-2 p-2">
         <h2 class="card-header">Ledger</h2>
 
-        <h3 class="card=header m-2 p-2"> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits </h3>
+        <h3 class="card=header m-2 p-2"> {{ incomeItems.length }} Credits , {{ expenseItems.length }} Debits ,
+            {{ savingItems.length }} Savings </h3>
 
             <div id="ledger-table">
                 <table class="table m-2 p-2">
@@ -104,7 +111,17 @@
                         <td>{{ income.description }}</td>
                         <td>{{ income.amount }}</td>
                     </tr>
+
+                    <tr v-for="expense in expenseItems">
+                        <td>{{ expense.description }}</td>
+                        <td>{{ expense.amount }}</td>
                     </tr>
+
+                    <tr v-for="saving in savingItems">
+                        <td>{{ saving.description }}</td>
+                        <td>{{ saving.amount }}</td>
+                    </tr>
+
                 </table>
             </div>
         </div>
@@ -137,11 +154,11 @@
             expenseOptions: ['Auto', 'Cable/Internet', 'Entertainment', 'Groceries', 'Insurance', 'Loans', 'Pet',
                 'Phone', 'Utilities', 'Other'],
             expenseOption: '',
-            expenseAmount: "",
+            expenseAmount: 0,
             expenseItems: [],
             savingOptions: ['Checking', 'Investments', 'Savings', 'Retirement', 'Other'],
             savingOption: '',
-            savingAmount: "",
+            savingAmount: 0,
             savingItems: [],
             ledger: []
         },
@@ -150,11 +167,22 @@
         // }
         methods: {
             addIncome() {
-                console.log("add income!")
                 let income = {description: this.incomeOption, amount: this.incomeAmount}
                 this.incomeItems.push(income)
                 this.incomeOption = ''
                 this.incomeAmount = ''
+            },
+            addExpense() {
+                let expense = {description: this.expenseOption, amount: this.expenseAmount}
+                this.expenseItems.push(expense)
+                this.expenseOption = ''
+                this.expenseAmount = ''
+            },
+            addSaving() {
+                let saving = {description: this.savingOption, amount: this.savingAmount}
+                this.savingItems.push(saving)
+                this.savingOption = ''
+                this.savingAmount = ''
             }
         }
     })
